@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AccountMapper">
+<select id="selectByPhoneNumber" parameterType="String" resultType="javabean.Account">
+    select * from account where phoneNumber = #{phoneNumber};
+</select>
+
+<insert id="insertAccount" parameterType="javabean.Account">
+    insert into account values(#{phoneNumber},#{password}, #{name}, #{sex}, #{id}, #{address}, #{image});
+</insert>
+
+<select id="verify" parameterType="String" resultType="String">
+    select password from account where phoneNumber = #{phoneNumber};
+</select>
+
+<update id="updateImage" parameterType="String">
+    update account set image = #{param1} where phoneNumber = #{param2};
+</update>
+
+<update id="update" parameterType="javabean.Account">
+    update account set name = #{name}, sex = #{sex}, id = #{id}, address = #{address};
+</update>
+
+</mapper>

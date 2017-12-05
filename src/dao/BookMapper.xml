@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BookMapper">
+    <select id="selectByIsbn" parameterType="String" resultType="javabean.Book">
+        select * from book where isbnNumber = #{isbnNumber};
+    </select>
+
+    <insert id="insertBook" parameterType="javabean.Book">
+        insert into book values(#{isbnNumber},#{title}, #{author}, #{pages}, #{price}, #{pubDate}, #{publisher}, #{image}, #{summary}, #{tag});
+    </insert>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.HBookStoreMapper">
+    <select id="selectHBookStore" parameterType="String" resultType="javabean.HBookStore">
+        select * from hbookstore where phoneNumber = #{phoneNumber};
+    </select>
+
+    <insert id="insertHBookStore" parameterType="javabean.HBookStore">
+        insert into hbookstore values(#{phoneNumber}, #{isbnNumber}, #{btime});
+    </insert>
+
+    <delete id="deleteHBookStore">
+        delete from hbookstore where phoneNumber = #{phoneNumber} and isbnNumber = #{isbnNumber};
+    </delete>
+</mapper>

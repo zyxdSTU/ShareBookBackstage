@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BookStoreMapper">
+    <select id="selectAllBook" resultType="String">
+        select distinct isbnNumber from bookstore;
+    </select>
+
+    <select id="selectBookStore" parameterType="String" resultType="javabean.BookStore">
+        select * from bookstore where phoneNumber = #{phoneNumber};
+    </select>
+
+    <select id="selectOwners" parameterType="String" resultType="String">
+        select phoneNumber from bookstore where isbnNumber = #{isbnNumber} and flag != 0;
+    </select>
+
+    <select id="bookStoreChooseRole" resultType="java.lang.Integer">
+        select flag from bookstore where isbnNumber= #{isbnNumber} and phoneNumber = #{phoneNumber};
+    </select>
+
+    <insert id="insertBookStore" parameterType="javabean.BookStore">
+        insert into bookstore values(#{phoneNumber}, #{isbnNumber}, #{btime}, #{flag});
+    </insert>
+
+    <delete id="deleteBookStore">
+        delete from bookstore where phoneNumber = #{phoneNumber} and  isbnNumber = #{isbnNumber};
+    </delete>
+</mapper>
